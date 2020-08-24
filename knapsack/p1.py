@@ -1,3 +1,6 @@
+import sys
+all_data = [int(x) for x in sys.stdin.read().split('\n')[:-1]]
+
 def solver(total_distance, clubs):
     dp = [None] * (total_distance + 1)
     dp[0] = 0 # base case
@@ -8,5 +11,9 @@ def solver(total_distance, clubs):
 
     return dp[-1]
 
-print(solver(100, [33, 66, 1]))
+res = solver(all_data[0], all_data[2:])
+if res is not None:
+    print("Roberta wins in " + str(res) +  " strokes.")
+else:
+    print("Roberta acknowledges defeat.")
 
