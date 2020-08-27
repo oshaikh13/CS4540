@@ -11,6 +11,8 @@ import java.util.StringTokenizer;
 public class p3 {
     public static void main(String[] args) {
 
+        float [][] stations = new float[101][101];
+        float [][][] dp = new float[101][101][250];
 
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -28,7 +30,10 @@ public class p3 {
                 int f = Integer.parseInt(st.nextToken());
                 int k = Integer.parseInt(st.nextToken());
 
-                float [][] stations = new float[m + 1][n + 1];
+                if (m + n <= f) {
+                    System.out.printf("0.00");
+                    continue;
+                }
 
                 for (float[] t1 : stations) {
                     Arrays.fill(t1, -1);
@@ -43,7 +48,7 @@ public class p3 {
                         stations[a][b] = cost;
                     }
                 }
-                solve(m, n, f, stations);
+                solve(m, n, f, stations, dp);
             }
 
         } catch (Exception e) {
@@ -57,9 +62,8 @@ public class p3 {
     }
 
 
-    public static void solve(int m, int n, int f, float [][] stations) {
-
-        float [][][] dp = new float[m + 1][n + 1][f + 1];
+    public static void solve(int m, int n, int f, float [][] stations,
+                            float[][][] dp) {
 
         for (float[][] t1 : dp) {
             for (float[] t2 : t1) {

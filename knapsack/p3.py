@@ -4,6 +4,10 @@ import heapq
 
 def solver(m, n, f, stations):
 
+    if m + n <= f:
+        print("{:.2f}".format(0))
+        return
+
     dp = [[[float('inf') for _ in range(f + 1)] for _ in range(n + 1)] for _ in range(m + 1)]
     dp[1][1][f] = 0
 
