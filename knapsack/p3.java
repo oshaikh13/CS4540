@@ -11,11 +11,9 @@ import java.util.StringTokenizer;
 public class p3 {
     public static void main(String[] args) {
 
-        float [][] stations = new float[101][101];
-        float [][][] dp = new float[101][101][250];
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("gas.4.dat.txt"));
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
             int cases = -1;
             StringTokenizer st = new StringTokenizer(br.readLine());
@@ -35,6 +33,8 @@ public class p3 {
                     continue;
                 }
 
+                float [][] stations = new float[m + 1][n + 1];
+
                 for (float[] t1 : stations) {
                     Arrays.fill(t1, -1);
                 }
@@ -48,7 +48,7 @@ public class p3 {
                         stations[a][b] = cost;
                     }
                 }
-                solve(m, n, f, stations, dp);
+                solve(m, n, f, stations);
             }
 
         } catch (Exception e) {
@@ -62,8 +62,9 @@ public class p3 {
     }
 
 
-    public static void solve(int m, int n, int f, float [][] stations,
-                            float[][][] dp) {
+    public static void solve(int m, int n, int f, float [][] stations) {
+
+        float [][][] dp = new float[m + 1][n + 1][f + 1];
 
         for (float[][] t1 : dp) {
             for (float[] t2 : t1) {
@@ -77,7 +78,8 @@ public class p3 {
         PriorityQueue<float[]> heap = new PriorityQueue((a, b) -> {
             float costA = ((float[])a)[0];
             float costB = ((float[])b)[0];
-            if (costA > costB) return 1;
+            if (costA - costB > 0) return 1;
+            else if (costA == costB) return 0;
             return -1;
         });
 
@@ -125,8 +127,9 @@ public class p3 {
                     // out of bounds
                     if (newM > m || newM < 1 || newN > n || newN < 1 || --newF < 0)
                         continue;
-                    if (newCost >= dp[newM][newN][newF]) continue;
                 
+                    if (newCost >= dp[newM][newN][newF]) continue;
+
                     heap.add(new float[]{newCost, newM, newN, newF});
                     dp[newM][newN][newF] = newCost;
                 }
