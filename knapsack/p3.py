@@ -3,7 +3,6 @@
 import heapq
 
 def solver(m, n, f, stations):
-
     if m + n <= f:
         print("{:.2f}".format(0))
         return
@@ -56,6 +55,9 @@ def solver(m, n, f, stations):
                 if new_m > m or new_m < 1 or new_n > n or new_n < 1 or new_f < 0:
                     continue
             
+                if new_cost >= dp[new_m][new_n][new_f]:
+                    continue
+
                 heapq.heappush(heap, (new_cost, (new_m, new_n, new_f)))
                 dp[new_m][new_n][new_f] = new_cost  
 
@@ -65,7 +67,11 @@ def solver(m, n, f, stations):
 
 
 import sys
-all_in = sys.stdin.read().split('\n')
+# all_in = sys.stdin.read().split('\n')
+fopen = open('gas.4.dat.txt',mode='r')
+ 
+# read all lines at once
+all_in = fopen.read().split("\n")
 
 read_idx = 0
 cases = int(all_in[read_idx])

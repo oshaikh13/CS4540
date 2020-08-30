@@ -15,7 +15,7 @@ public class p3 {
         float [][][] dp = new float[101][101][250];
 
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            BufferedReader br = new BufferedReader(new FileReader("gas.4.dat.txt"));
 
             int cases = -1;
             StringTokenizer st = new StringTokenizer(br.readLine());
@@ -77,8 +77,7 @@ public class p3 {
         PriorityQueue<float[]> heap = new PriorityQueue((a, b) -> {
             float costA = ((float[])a)[0];
             float costB = ((float[])b)[0];
-            if (costA - costB > 0) return 1;
-            else if (costA == costB) return 0;
+            if (costA > costB) return 1;
             return -1;
         });
 
@@ -126,6 +125,7 @@ public class p3 {
                     // out of bounds
                     if (newM > m || newM < 1 || newN > n || newN < 1 || --newF < 0)
                         continue;
+                    if (newCost >= dp[newM][newN][newF]) continue;
                 
                     heap.add(new float[]{newCost, newM, newN, newF});
                     dp[newM][newN][newF] = newCost;
