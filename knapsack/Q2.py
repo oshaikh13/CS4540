@@ -1,3 +1,5 @@
+# PLEASE USE PYPY3 TO RUN ON DMOJ, NOT PYTHON
+
 import sys
 all_data = sys.stdin.read().split('\n')[:-1]
 capacity = int(all_data[0].split(" ")[-1])

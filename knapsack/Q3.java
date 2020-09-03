@@ -1,3 +1,5 @@
+// Use JAVA 11 on DMOJ
+
 import java.util.HashMap;
 import java.util.PriorityQueue;
 import java.util.Arrays;
@@ -8,7 +10,7 @@ import java.util.StringTokenizer;
 
 
 // something something gave up on python something something.
-public class p3 {
+public class Q3 {
     public static void main(String[] args) {
 
 

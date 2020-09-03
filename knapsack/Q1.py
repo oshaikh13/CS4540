@@ -1,3 +1,5 @@
+# PLEASE USE PYPY3 TO RUN ON DMOJ, NOT PYTHON
+
 import sys
 all_data = [int(x) for x in sys.stdin.read().split('\n')[:-1]]
 
