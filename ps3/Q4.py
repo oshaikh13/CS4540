@@ -7,7 +7,7 @@ import sys
 # 8 9 0 1 3
 # 1 5 2 3 7
 # """
-input_txt = sys.stdin.read().split('\n')
+text_input = sys.stdin.read().split('\n')
 # text_input = text_input.split("\n")
 W, H, N = map(int, text_input[0].split(" "))
 prefix = [[0 for i in range(W + 1)] for i in range(H + 1)]
