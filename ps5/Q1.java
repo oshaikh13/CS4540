@@ -54,7 +54,6 @@ public class Q1 {
     public static void main(String [] args) {
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            // BufferedReader br = new BufferedReader(new FileReader("in.txt"));
 
             int elems = -1;
             int queries = -1;
@@ -66,11 +65,9 @@ public class Q1 {
             for (int i = 0; i < elems; i++) {
                 st = new StringTokenizer(br.readLine());
                 data[i] = Integer.parseInt(st.nextToken());
-                // System.out.println(data[i]);
             }
 
             build(0, 0, elems - 1);
-            System.out.println();
             for (int i = 0; i < queries; i++) {
                 st = new StringTokenizer(br.readLine());
                 String type = st.nextToken();
