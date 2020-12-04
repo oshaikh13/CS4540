@@ -18,8 +18,6 @@ balls = [int(i) for i in all_data[1].split()]
 curr_max = 0
 prefix = [0] + [sum(balls[:i + 1]) for i in range(len(balls))]
 
-print(prefix)
-
 def solve(l, r):
 
     if l >= r: return True
@@ -47,6 +45,3 @@ for i in range(len(balls)):
             curr_max = max(curr_max, prefix[j + 1] - prefix[i])
 
 print(curr_max)
-
-
-
